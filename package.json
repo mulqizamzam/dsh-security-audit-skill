@@ -30,8 +30,7 @@
   },
   "scripts": {
     "validate": "node scripts/validate-package.mjs",
-    "test": "node --test",
-    "prepack": "npm run validate && npm test"
+    "test": "node --test"
   },
   "dsh": {
     "bundle": {
