@@ -1,0 +1,40 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Validate bundle and package boundaries
+        run: npm run validate
+      - name: Run upstream and port regression suites
+        run: npm test
+      - name: Compare deterministic package archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pack-a /tmp/pack-b
+          npm pack --ignore-scripts --pack-destination /tmp/pack-a
+          npm pack --ignore-scripts --pack-destination /tmp/pack-b
+          cmp /tmp/pack-a/dsh-security-audit-skill-0.1.0.tgz /tmp/pack-b/dsh-security-audit-skill-0.1.0.tgz
+          sha256sum /tmp/pack-a/dsh-security-audit-skill-0.1.0.tgz
+      - name: Validate fresh package extraction
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fresh
+          tar -xzf /tmp/pack-a/dsh-security-audit-skill-0.1.0.tgz -C /tmp/fresh
+          cd /tmp/fresh/package
+          node scripts/validate-package.mjs
+          node --test

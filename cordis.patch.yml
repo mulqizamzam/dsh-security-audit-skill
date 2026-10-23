@@ -1,0 +1,11 @@
+# Register a dedicated provider for this package's Skills. Do not override the
+# existing provider and do not include the user's default project/user roots.
+- insert:
+    - id: dsh-security-audit-skill-filesystem
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: security-audit-bundle
+        includeDefaultRoots: false
+        customSkillDirs:
+          - !!js process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('dsh-security-audit-skill/package.json')), 'skills')
+        watch: true

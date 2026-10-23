@@ -1,0 +1,41 @@
+{
+  "name": "dsh-security-audit-skill",
+  "version": "0.1.0",
+  "description": "Source-first security auditing and evidence-backed vulnerability reports for DeepSeek Harness.",
+  "license": "MIT",
+  "type": "module",
+  "icon": "./icon.svg",
+  "exports": {
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "assets/*.svg",
+    "locale/*.json",
+    "skills/security-audit/**",
+    "scripts/validate-package.mjs",
+    "tests/package.test.mjs",
+    "CONVERSION.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=24",
+    "dsh": "0.2.1-rc.2"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-package.mjs",
+    "test": "node --test",
+    "prepack": "npm run validate && npm test"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

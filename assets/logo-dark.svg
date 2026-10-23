@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title">
+  <title id="title">Security Audit — dark</title>
+  <path d="M64 12 105 28v30c0 28-16 47-41 60C39 105 23 86 23 58V28z" fill="#101828" stroke="#F4F7FB" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M42 63 57 78 86 46" fill="none" stroke="#F4B942" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 17h15M17 17v15M111 96v15M111 111H96" fill="none" stroke="#83E0BD" stroke-width="4" stroke-linecap="round"/>
+</svg>
