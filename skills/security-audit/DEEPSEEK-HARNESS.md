@@ -12,7 +12,7 @@ The provider has a unique name, `security-audit-bundle`, and uses `includeDefaul
 
 The upstream describes `research` and `general` task roles; those labels are not DSH tool names. Use the actual configured DSH `subagent` schema. Full audit mode needs distinct independent child runs for reconnaissance, hunting, coverage critics, candidate validation, and final record verification. Preserve parent-only shared-file ownership and unique scratch/artifact paths for each child.
 
-If independent delegation is unavailable, don't flatten those roles into one agent or mark self-review independent. Record the exact missing capability, keep affected work incomplete, and do not promote unvalidated candidates into `findings.json`.
+If independent delegation is unavailable, don't flatten those roles into one agent or mark self-review independent. Record the exact missing capability, mark the affected phase incomplete, and do not promote unvalidated candidates into `findings.json`.
 
 ## Host files and commands
 
