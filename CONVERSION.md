@@ -25,7 +25,7 @@ No useful domain workflow was intentionally removed. The bundle doesn't claim th
 
 ## DSH-native design
 
-The `package.json` declares `dsh.bundle.patch` and exact `engines.dsh`. The patch inserts `@deepseek-ai/dsh-skill-filesystem` under a new row ID and sets a unique provider name, with the bundle's package-relative `skills/` directory as its only custom root (`includeDefaultRoots: false`). Existing provider rows are not overridden. The package exports its `package.json` so the DSH-supported module-resolution expression can locate the Skill directory after package installation.
+The `package.json` declares `dsh.bundle.patch`, exact `engines.dsh`, and matching peer/dev constraints on `@deepseek-ai/dsh-skill-filesystem` so the provider resolves against the intended DSH runtime. The patch inserts `@deepseek-ai/dsh-skill-filesystem` under a new row ID and sets a unique provider name, with the bundle's package-relative `skills/` directory as its only custom root (`includeDefaultRoots: false`). Existing provider rows are not overridden. The package exports its `package.json` so the DSH-supported module-resolution expression can locate the Skill directory after package installation.
 
 ### Host capability profile
 

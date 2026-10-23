@@ -10,6 +10,7 @@ const read=(p)=>readFile(path.join(root,p),"utf8");
 test("pins the requested Harness runtime and declares a native bundle",async()=>{
  const p=JSON.parse(await read("package.json"));
  assert.equal(p.engines.dsh,"0.2.1-rc.2");
+ assert.equal(p.peerDependencies["@deepseek-ai/dsh-skill-filesystem"],"0.2.1-rc.2");
  assert.equal(p.dsh.bundle.patch,"./cordis.patch.yml");
  assert.equal(p.version,"0.1.0");
 });

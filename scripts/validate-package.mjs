@@ -48,7 +48,7 @@ for (const p of ["icon.svg", "assets/logo-light.svg", "assets/logo-dark.svg"]) {
   assert.match(svg, /<svg\b/);
   const m = svg.match(/viewBox=["']0 0 (\d+) (\d+)["']/);
   assert.ok(m && m[1] === m[2], `${p} must use a square viewBox`);
-  assert.ok(!/https?:\/\//i.test(svg), `${p} must be self-contained`);
+  assert.ok(!/(?:href|src)\s*=\s*["']https?:\/\/|url\(\s*["']?https?:\/\//i.test(svg), `${p} must not reference remote resources`);
 }
 async function scan(dir, rel = "") {
   for (const entry of await readdir(dir, {withFileTypes:true})) {
