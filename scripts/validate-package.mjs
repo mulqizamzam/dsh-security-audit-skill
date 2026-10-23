@@ -52,6 +52,7 @@ for (const p of ["icon.svg", "assets/logo-light.svg", "assets/logo-dark.svg"]) {
 }
 async function scan(dir, rel = "") {
   for (const entry of await readdir(dir, {withFileTypes:true})) {
+    if (rel === "" && entry.name === ".git") continue; // Ignore the checkout metadata, never package it.
     const next = rel ? rel + "/" + entry.name : entry.name;
     assert.ok(!next.split("/").includes(".."), `unsafe path ${next}`);
     const full = path.join(dir, entry.name);
