@@ -37,7 +37,7 @@ test("retains upstream attack domains, validators, schema, and tests",async()=>{
 });
 test("documentation admits sandbox and delegation limitations",async()=>{
  const p=await read("skills/security-audit/DEEPSEEK-HARNESS.md");
- assert.match(p,/do not by themselves establish the OS-enforced isolation/i);
+ assert.match(p,/does not establish the OS-enforced isolation/i);
  assert.match(p,/mark the affected phase incomplete/i);
 });
 test("preserves MIT notice and self-contained square brand assets",async()=>{
